@@ -15,9 +15,17 @@ function changeQttSquaresOnEachSide(qttSquares) {
     const el = document.createElement("div");
     el.style['width'] = (QTT_SQUARES_ON_EACH_SIDE_INITIAL/qttSquares) + 'rem';
     el.style['height'] = (QTT_SQUARES_ON_EACH_SIDE_INITIAL/qttSquares) + 'rem';
-  
+
+    const hexChars = "0123456789ABCDEF";
+    let hexColor = "#";
+
+    for (let i = 0; i < 6; i++) {
+      hexColor += hexChars.charAt(Math.floor(Math.random() * hexChars.length));
+    }
+
     el.addEventListener("mouseover", (e) => {
-      el.style["backgroundColor"] = "#000";
+      el.style["backgroundColor"] = hexColor;
+      el.style["opacity"] = Number(el.style["opacity"]) + 0.1;
     });
   
     document.querySelector("#container").appendChild(el);
